@@ -1,0 +1,42 @@
+{% extends "Dashboard.html" %}
+{% block addcss %}
+<link rel="stylesheet" href="{{url_for('static',filename='Addnotes.css')}}" />
+{% endblock %}
+{% block content %}
+
+<div class="form-container">
+    <div class="form-card">
+        <h2>Update Notes</h2>
+
+        <form method="post">
+
+            <!-- Title -->
+            <div class="form-group">
+                <label for="title">Title</label>
+                <textarea 
+                    id="title" 
+                    name="title" 
+                    rows="2" 
+                    required>{{stored_notesdata[1]}}</textarea>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea 
+                    id="description" 
+                    name="description" 
+                    rows="6" 
+                    required>{{stored_notesdata[2]}}</textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn">
+                Submit
+            </button>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

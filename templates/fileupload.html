@@ -1,0 +1,28 @@
+{% extends "Dashboard.html" %}
+{% block addcss %}
+<link rel="stylesheet" href="{{url_for('static',filename='Addnotes.css')}}" />
+{% endblock %}
+{% block content %}
+
+<div class="form-container">
+    <div class="form-card">
+        <h2>Upload file</h2>
+
+        <form method="post" enctype="multipart/form-data">
+
+            <!-- Title -->
+            <div class="form-group">
+                <label for="title">Fileupload</label>
+                <input type="file" name="filedata" placeholder="upload file">
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn">
+                Submit
+            </button>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

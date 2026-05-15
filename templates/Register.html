@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+*{
+    margin:0;
+    padding: 0;
+}
+div{
+    background-color:bisque;
+    width: 100vw;
+    height:100vh;
+}
+.Submit{
+        background-color:gold;
+        color:black;
+        padding:10px 28px;
+        border-radius: 25px;
+        border:none;
+        font-weight:550;
+    }
+    
+    input{
+            border-radius: 10px;
+            padding:5px 50px;
+            border:1px black solid;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div>
+    <center><br>
+        <h1><i>Welcome to Simple Notes Management System </i></h1><br>
+        <form method="post">
+            <label for="">Username : </label>
+            <input type="text" name="username" placeholder="  Username"><br><br>
+            <label for="">Email id : </label>
+            <input type="text" name="useremail" placeholder="  Email id"><br><br>
+            <label for="">Password : </label>
+            <input type="text" name="password" placeholder="  Password"><br><br>
+            <a href=""><button class="Submit">Submit</button></a>
+        </form>
+        <br><p>If You have Account? Please <a href="{{url_for('Login')}}">Login</a></p>
+        <div><br>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+    </center>
+    </div>
+</body>
+</html>

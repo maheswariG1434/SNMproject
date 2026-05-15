@@ -1,0 +1,54 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+<title>View Notes</title>
+{% endblock %}
+
+{% block addcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='viewallnotes.css') }}" />
+<link rel="stylesheet" href="/static/Viewallnotes.css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="{{ url_for('Dashboard') }}" class="back-btn">Back</a>
+
+    <h1>View Notes</h1>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date Created</th>
+                    <th>View</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if files_data %}
+                    {% for note in files_data %}
+                    <tr>
+                        <td data-label="ID">{{ note[0] }}</td>
+                        <td data-label="Title">{{ note[1] }}</td>
+                        <td data-label="Description">{{ note[2] }}</td>
+                        <td data-label="Date">{{ note[3] }}</td>
+                        <td data-label="View"><a href="{{ url_for('Viewnotes', nid=note[0]) }}" class="view-btn">View</a></td>
+                        <td data-label="Update"><a href="{{ url_for('UpdateNotes', nid=note[0]) }}" class="view-btn">Update</a></td>
+                        <td data-label="Delete"><a href="{{ url_for('deletenotes', nid=note[0]) }}" class="delete-btn">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="no-data">No notes found</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

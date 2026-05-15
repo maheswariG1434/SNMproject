@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes Dashboard</title>
+    <link rel="stylesheet" href="/static/Dashboard.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{{url_for('static',filename='Dashboard.css')}}" />
+    {% block addcss %}{% endblock %}
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <!-- Logo -->
+        <div class="logo">
+            <i class="fa-solid fa-book-open"></i>
+            NotesHub
+        </div>
+
+        <!-- Menu -->
+        <ul class="nav-links">
+
+            <!-- Notes Dropdown -->
+            <li class="dropdown">
+                <a href="#">
+                    Notes <i class="fa-solid fa-caret-down"></i>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a href="{{url_for('Addnotes')}}">Add Notes</a></li>
+                    <li><a href="{{url_for('Viewallnotes')}}">View All Notes</a></li>
+                    <li><a href="{{url_for('Getexceldata')}}">Get Excel Data</a></li>
+                </ul>
+            </li>
+
+            <!-- Files Dropdown -->
+            <li class="dropdown">
+                <a href="#">
+                    Files <i class="fa-solid fa-caret-down"></i>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a href="{{url_for('fileupload')}}">Upload File</a></li>
+                    <li><a href="{{url_for('Viewallfiles')}}">View All Files</a></li>
+                </ul>
+            </li>
+
+            <!-- Logout -->
+            <li>
+                <a href="{{url_for('Logout')}}" class="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+
+        <h4>{{session.get('user')}}</h4>
+        <h4>{% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </h4>
+
+        <!-- Search -->
+         <form method="post" action="{{url_for('Searchdata')}}">
+        <div class="search-box">
+            <input type="text" placeholder="Search..." name="search" />
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+        </form>
+    </nav>
+    <!-- Hero Section -->
+    {% block content %}
+    <section class="hero">
+        <h1>Welcome to NotesHub</h1>
+        <p>Manage your notes and files efficiently with a clean dashboard.</p>
+    </section>
+    {% endblock %}
+</body>
+
+</html>

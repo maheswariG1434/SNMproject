@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            background-color: cornsilk;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        input {
+            border-radius: 10px;
+            padding: 5px 40px;
+            border: 1px black solid;
+        }
+
+        button {
+            background-color: gold;
+            color: black;
+            padding: 10px 30px;
+            border-radius: 20px;
+            border: none;
+            font-weight: 550;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <center><br>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <h1><i>Login Account</i></h1><br>
+            <form method="post">
+                <label for="">Email id : </label>
+                <input type="text" name="email" placeholder="Email id"><br><br>
+                <label for="">Password : </label>
+                <input type="text" name="password" placeholder="Password"><br><br>
+                <a href=""><button>Login</button></a>
+            </form><br>
+            <p>If You dont have Account? Please <a href="">Register</a></p><br>
+            <div class="footer">
+                Forgot Password? <a href="{{url_for('Forgotpassword')}}">Forgot</a>
+            </div>
+        </center>
+    </div>
+</body>
+
+</html>

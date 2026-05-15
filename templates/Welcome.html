@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        background-color: bisque;
+        width:100vw;
+        height: 100vh;
+    }
+    .Register{
+        background-color: blue;
+        color:white;
+        padding:10px 20px;
+        border-radius: 25px;
+        border:none;
+        font-weight:550;
+    }
+    .Login{
+         background-color: blue;
+        color:white;
+        padding:10px 28px;
+        border-radius: 25px;
+        border:none;
+        font-weight:550;
+    }
+    
+    .Register:hover{
+        background-color: gold;
+        color:black;
+        padding:10px 20px;
+        border-radius: 25px;
+        border:none;
+        font-weight:550;
+    }
+
+    .Login:hover{
+         background-color:gold;
+        color:black;
+        padding:10px 28px;
+        border-radius: 25px;
+        border:none;
+        font-weight:550;
+    }
+</style>
+
+<body>
+    <div>
+        <center><br>
+            <h1><i> Welcome to Simple Notes Management System </i> </h1><br>
+            <a href="{{url_for('Register')}}"><button class="Register">Register</button></a><br><br>
+           <a href="{{url_for('Login')}}"> <button class="Login">Login</button></a>
+        </center>
+    </div>
+</body>
+
+</html>
